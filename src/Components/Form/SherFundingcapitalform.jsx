@@ -1,0 +1,659 @@
+import { useState, useRef } from "react";
+import './SherFundingcapitalform.css';
+// Inline styles as a style tag injected via dangerouslySetInnerHTML pattern
+
+
+// Simple SVG logo approximating SherFunding Capital Solutions
+function SherFundingLogo() {
+  return (
+    <svg className="ngc-logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,5 95,27.5 95,72.5 50,95 5,72.5 5,27.5" fill="#1a2540" opacity="0.9"/>
+      <polygon points="50,18 80,33 80,65 50,80 20,65 20,33" fill="none" stroke="#2563eb" strokeWidth="2"/>
+      <polygon points="50,30 68,40 68,60 50,70 32,60 32,40" fill="#2563eb" opacity="0.8"/>
+      <polygon points="50,40 60,46 60,56 50,62 40,56 40,46" fill="#60a5fa" opacity="0.9"/>
+      <text x="50" y="118" textAnchor="middle" fontSize="11" fontWeight="700" fontFamily="Sora,sans-serif" fill="#1a2540" letterSpacing="1">SherFunding</text>
+      <text x="50" y="130" textAnchor="middle" fontSize="7" fontFamily="DM Sans,sans-serif" fill="#5a6070" letterSpacing="0.5">CAPITAL SOLUTIONS</text>
+    </svg>
+  );
+}
+
+// Upload cloud icon
+function CloudUploadIcon() {
+  return (
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#9aa3b5" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="16 16 12 12 8 16"/>
+      <line x1="12" y1="12" x2="12" y2="21"/>
+      <path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/>
+    </svg>
+  );
+}
+
+// Pen/signature icon
+function PenIcon() {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#c8cdd8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 20h9"/>
+      <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+    </svg>
+  );
+}
+
+export default function SherFundingCapitalForm() {
+  const [formData, setFormData] = useState({
+    legalName: "",
+    homeBased: "",
+    businessStreet: "",
+    businessCity: "",
+    businessState: "",
+    businessZip: "",
+    dob: "",
+    homeStreet: "",
+    homeCity: "",
+    homeState: "",
+    homeZip: "",
+    partnerStreet: "",
+    partnerCity: "",
+    partnerState: "",
+    partnerZip: "",
+    bankStatement: null,
+    mcaHistory: "",
+    authorized: true,
+  });
+
+  const canvasRef = useRef(null);
+  const [isDrawing, setIsDrawing] = useState(false);
+  const [hasSignature, setHasSignature] = useState(false);
+  const lastPos = useRef(null);
+
+  const handle = (field) => (e) => {
+    const val = e.target.type === "checkbox" ? e.target.checked : e.target.value;
+    setFormData((prev) => ({ ...prev, [field]: val }));
+  };
+
+  // Signature canvas drawing
+  const getPos = (e, canvas) => {
+    const rect = canvas.getBoundingClientRect();
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    return {
+      x: (clientX - rect.left) * (canvas.width / rect.width),
+      y: (clientY - rect.top) * (canvas.height / rect.height),
+    };
+  };
+
+  const startDraw = (e) => {
+    e.preventDefault();
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    setIsDrawing(true);
+    lastPos.current = getPos(e, canvas);
+  };
+
+  const draw = (e) => {
+    e.preventDefault();
+    if (!isDrawing) return;
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    const pos = getPos(e, canvas);
+    ctx.beginPath();
+    ctx.moveTo(lastPos.current.x, lastPos.current.y);
+    ctx.lineTo(pos.x, pos.y);
+    ctx.strokeStyle = "#1a2540";
+    ctx.lineWidth = 2;
+    ctx.lineCap = "round";
+    ctx.stroke();
+    lastPos.current = pos;
+    setHasSignature(true);
+  };
+
+  const stopDraw = () => setIsDrawing(false);
+
+  const clearSignature = () => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
+    setHasSignature(false);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert("Form submitted successfully!");
+  };
+
+  return (
+    <>
+      {/* <style>{styles}</style> */}
+      <div className="ngc-wrapper">
+        {/* Logo */}
+        <div className="ngc-logo-wrap">
+          <SherFundingLogo />
+        </div>
+
+        {/* Card */}
+        <div className="ngc-card">
+          <div className="ngc-card-title"> SherFunding Capital</div>
+          <p className="ngc-card-desc">
+            At SherFunding Capital Solution, we're committed to helping small and mid sized businesses succeed by
+            providing fast, hassle free funding solutions and business loans within 24 hours.
+          </p>
+
+          <form onSubmit={handleSubmit} noValidate>
+            {/* Legal / Corporate Name */}
+            <div className="ngc-field-group">
+              <label className="ngc-label">
+                Legal / Corporate Name <span className="required">*</span>
+              </label>
+              <input
+                type="text"
+                className="ngc-input"
+                placeholder="Legal Business Name"
+                value={formData.legalName}
+                onChange={handle("legalName")}
+              />
+            </div>
+
+              {/* Doing Business Name */}
+            <div className="ngc-field-group">
+              <label className="ngc-label">
+                Doing Business Name <span className="required">*</span>
+              </label>
+              <input
+                type="text"
+                className="ngc-input"
+                placeholder="Doing Business Name"
+                value={formData.doingBusinessName}
+                onChange={handle("doingBusinessName")}
+              />
+            </div>
+
+              {/* Business Phone Number */}
+            <div className="ngc-field-group">
+              <label className="ngc-label">
+                Business Phone Number <span className="required">*</span>
+              </label>
+              <input
+                type="text"
+                className="ngc-input"
+                placeholder="Business Phone Number"
+                value={formData.businessPhone}
+                onChange={handle("businessPhone")}
+              />
+            </div>
+
+              {/* Business Email */}
+            <div className="ngc-field-group">
+              <label className="ngc-label">
+                Business Email <span className="required">*</span>
+              </label>
+              <input
+                type="text"
+                className="ngc-input"
+                placeholder="Business Email"
+                value={formData.businessEmail}
+                onChange={handle("businessEmail")}
+              />
+            </div>
+
+              {/* Federal Tax ID (EIN) */}
+            <div className="ngc-field-group">
+              <label className="ngc-label">
+                Federal Tax ID (EIN)  <span className="required">*</span>
+              </label>
+              <input
+                type="text"
+                className="ngc-input"
+                placeholder="Federal Tax ID (EIN)"
+                value={formData.federalTaxId}
+                onChange={handle("federalTaxId")}
+              />
+            </div>
+
+            {/* Industry Type */}
+            <div className="ngc-field-group">
+              <label className="ngc-label">
+                Industry Type <span className="required">*</span>
+              </label>
+              <select
+                className={`ngc-select${formData.industryType ? " has-value" : ""}`}
+                value={formData.industryType}
+                onChange={handle("industryType")}
+              >
+                <option value="" disabled>Please Select</option>
+                <option value="retail">Retail</option>
+                <option value="service">Service</option>
+                <option value="manufacturing">Manufacturing</option>
+              </select>
+            </div>
+
+            {/* Entity Type */}
+            <div className="ngc-field-group">
+              <label className="ngc-label">
+                Entity Type <span className="required">*</span>
+              </label>
+              <select 
+                className={`ngc-select${formData.entityType ? " has-value" : ""}`}
+                value={formData.entityType}
+                onChange={handle("entityType")}
+              >
+                <option value="" disabled>Please Select</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+
+            {/* Home-based business */}
+            <div className="ngc-field-group">
+              <label className="ngc-label">
+                Is this a home-based business? <span className="required">*</span>
+              </label>
+              <select
+                className={`ngc-select${formData.homeBased ? " has-value" : ""}`}
+                value={formData.homeBased}
+                onChange={handle("homeBased")}
+              >
+                <option value="" disabled>Please Select</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+
+            {/* Business Address */}
+            <div className="ngc-field-group">
+              <label className="ngc-label">Business Address</label>
+              <input
+                type="text"
+                className="ngc-input"
+                placeholder="Street Address"
+                value={formData.businessStreet}
+                onChange={handle("businessStreet")}
+              />
+              <div className="ngc-address-row" style={{ marginTop: 10 }}>
+                <input
+                  type="text"
+                  className="ngc-input"
+                  placeholder="City"
+                  value={formData.businessCity}
+                  onChange={handle("businessCity")}
+                />
+                <input
+                  type="text"
+                  className="ngc-input"
+                  placeholder="State / Province"
+                  value={formData.businessState}
+                  onChange={handle("businessState")}
+                />
+                <input
+                  type="text"
+                  className="ngc-input"
+                  placeholder="Postal / Zip Code"
+                  value={formData.businessZip}
+                  onChange={handle("businessZip")}
+                />
+              </div>
+            </div>
+
+            <hr className="ngc-divider" />
+
+            {/* Owners Information */}
+                         
+            <div className="ngc-section-title">Owners Information</div>
+
+             {/* First Name */}
+            <div className="ngc-field-group">
+              <label className="ngc-label">
+                First Name <span className="required">*</span>
+              </label>
+              <input
+                type="text"
+                className="ngc-input"
+                placeholder="First Name"
+                value={formData.firstName}
+                onChange={handle("firstName")}
+              />
+            </div>
+              {/* Last Name */}
+                <div className="ngc-field-group">
+              <label className="ngc-label">
+                Last Name <span className="required">*</span>
+              </label>
+              <input
+                type="text"
+                className="ngc-input"
+                placeholder="Last Name"
+                value={formData.lastName}
+                onChange={handle("lastName")}
+              />
+            </div>
+            {/* Date of Birth */}
+            <div className="ngc-field-group">
+              <label className="ngc-label">Date of Birth</label>
+              <input
+                type="date"
+                className="ngc-input"
+                placeholder="MM-DD-YYYY"
+                value={formData.dob}
+                onChange={handle("dob")}
+                style={{ color: formData.dob ? "#1a1d23" : "#b0b7c3" }}
+              />
+            </div>
+
+            {/* Home Address */}
+            <div className="ngc-field-group">
+              <label className="ngc-label">Home Address</label>
+              <input
+                type="text"
+                className="ngc-input"
+                placeholder="Street Address"
+                value={formData.homeStreet}
+                onChange={handle("homeStreet")}
+              />
+              <div className="ngc-address-row" style={{ marginTop: 10 }}>
+                <input
+                  type="text"
+                  className="ngc-input"
+                  placeholder="City"
+                  value={formData.homeCity}
+                  onChange={handle("homeCity")}
+                />
+                <input
+                  type="text"
+                  className="ngc-input"
+                  placeholder="State / Province"
+                  value={formData.homeState}
+                  onChange={handle("homeState")}
+                />
+                <input
+                  type="text"
+                  className="ngc-input"
+                  placeholder="Postal / Zip Code"
+                  value={formData.homeZip}
+                  onChange={handle("homeZip")}
+                />
+              </div>
+            </div>
+
+            <hr className="ngc-divider" />
+
+            {/* Partners Information */}
+            <div className="ngc-section-title">Partners Information (If Any)</div>
+
+            {/* Partner Address */}
+            <div className="ngc-field-group">
+              <label className="ngc-label">Address</label>
+              <input
+                type="text"
+                className="ngc-input"
+                placeholder="Street Address"
+                value={formData.partnerStreet}
+                onChange={handle("partnerStreet")}
+              />
+              <div className="ngc-address-row" style={{ marginTop: 10 }}>
+                <input
+                  type="text"
+                  className="ngc-input"
+                  placeholder="City"
+                  value={formData.partnerCity}
+                  onChange={handle("partnerCity")}
+                />
+                <input
+                  type="text"
+                  className="ngc-input"
+                  placeholder="State / Province"
+                  value={formData.partnerState}
+                  onChange={handle("partnerState")}
+                />
+                <input
+                  type="text"
+                  className="ngc-input"
+                  placeholder="Postal / Zip Code"
+                  value={formData.partnerZip}
+                  onChange={handle("partnerZip")}
+                />
+              </div>
+            </div>
+
+            {/* Partner Signature */}
+            <div className="ngc-field-group">
+              <label className="ngc-label">Partner Signature</label>
+              <div
+                className="ngc-signature-box"
+                onMouseDown={startDraw}
+                onMouseMove={draw}
+                onMouseUp={stopDraw}
+                onMouseLeave={stopDraw}
+                onTouchStart={startDraw}
+                onTouchMove={draw}
+                onTouchEnd={stopDraw}
+              >
+                <canvas
+                  ref={canvasRef}
+                  width={560}
+                  height={110}
+                  style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
+                />
+                {!hasSignature && (
+                  <>
+                    <span className="ngc-signature-icon"><PenIcon /></span>
+                    <span className="ngc-signature-label">Sign Here</span>
+                  </>
+                )}
+              </div>
+              <div className="ngc-sig-footer">
+                <span className="ngc-sig-powered">
+                  Powered by <a href="#" onClick={(e) => e.preventDefault()}>Jotform Sign</a>
+                </span>
+                <button type="button" className="ngc-sig-clear" onClick={clearSignature}>
+                  Clear
+                </button>
+              </div>
+            </div>
+
+            <hr className="ngc-divider" />
+
+            {/* Supporting Documents */}
+            <div className="ngc-section-title">Supporting Documents</div>
+
+            {/* Business Bank Statement 1 */}
+            <div className="ngc-field-group">
+              <label className="ngc-label">Business Bank Statement 1</label>
+              <label
+                className="ngc-upload-box"
+                htmlFor="bankStatement"
+                style={{ cursor: "pointer" }}
+              >
+                <span className="ngc-upload-icon"><CloudUploadIcon /></span>
+                <span className="ngc-upload-label">
+                  {formData.bankStatement ? formData.bankStatement.name : "Browse Files"}
+                </span>
+                {!formData.bankStatement && (
+                  <span className="ngc-upload-hint">Drag and drop files here</span>
+                )}
+                <input
+                  id="bankStatement"
+                  type="file"
+                  style={{ display: "none" }}
+                  onChange={(e) =>
+                    setFormData((prev) => ({ ...prev, bankStatement: e.target.files[0] || null }))
+                  }
+                />
+              </label>
+            </div>
+
+            {/* Business Bank Statement 2 */}
+            <div className="ngc-field-group">
+              <label className="ngc-label">Business Bank Statement 2</label>
+              <label
+                className="ngc-upload-box"
+                htmlFor="bankStatement2"
+                style={{ cursor: "pointer" }}
+              >
+                <span className="ngc-upload-icon"><CloudUploadIcon /></span>
+                <span className="ngc-upload-label">
+                  {formData.bankStatement2 ? formData.bankStatement2.name : "Browse Files"}
+                </span>
+                {!formData.bankStatement2 && (
+                  <span className="ngc-upload-hint">Drag and drop files here</span>
+                )}
+                <input
+                  id="bankStatement2"
+                  type="file"
+                  style={{ display: "none" }}
+                  onChange={(e) =>
+                    setFormData((prev) => ({ ...prev, bankStatement2: e.target.files[0] || null }))
+                  }
+                />
+              </label>
+            </div>
+
+            {/* Business Bank Statement 3 */}
+            <div className="ngc-field-group">
+              <label className="ngc-label">Business Bank Statement 3</label>
+              <label
+                className="ngc-upload-box"
+                htmlFor="bankStatement3"
+                style={{ cursor: "pointer" }}
+              >
+                <span className="ngc-upload-icon"><CloudUploadIcon /></span>
+                <span className="ngc-upload-label">
+                  {formData.bankStatement3 ? formData.bankStatement3.name : "Browse Files"}
+                </span>
+                {!formData.bankStatement3 && (
+                  <span className="ngc-upload-hint">Drag and drop files here</span>
+                )}
+                <input
+                  id="bankStatement3"
+                  type="file"
+                  style={{ display: "none" }}
+                  onChange={(e) =>
+                    setFormData((prev) => ({ ...prev, bankStatement3: e.target.files[0] || null }))
+                  }
+                />
+              </label>
+            </div>
+
+            {/* State ID */}
+            <div className="ngc-field-group">
+              <label className="ngc-label">State ID</label>
+              <label
+                className="ngc-upload-box"
+                htmlFor="stateId"
+                style={{ cursor: "pointer" }}
+              >
+                <span className="ngc-upload-icon"><CloudUploadIcon /></span>
+                <span className="ngc-upload-label">
+                  {formData.stateId ? formData.stateId.name : "Browse Files"}
+                </span>
+                {!formData.stateId && (
+                  <span className="ngc-upload-hint">Drag and drop files here</span>
+                )}
+                <input
+                  id="stateId"
+                  type="file"
+                  style={{ display: "none" }}
+                  onChange={(e) =>
+                    setFormData((prev) => ({ ...prev, stateId: e.target.files[0] || null }))
+                  }
+                />
+              </label>
+            </div>
+
+            {/* Drivers License */}
+            <div className="ngc-field-group">
+              <label className="ngc-label">Drivers License</label>
+              <label
+                className="ngc-upload-box"
+                htmlFor="driversLicense"
+                style={{ cursor: "pointer" }}
+              >
+                <span className="ngc-upload-icon"><CloudUploadIcon /></span>
+                <span className="ngc-upload-label">
+                  {formData.driversLicense ? formData.driversLicense.name : "Browse Files"}
+                </span>
+                {!formData.driversLicense && (
+                  <span className="ngc-upload-hint">Drag and drop files here</span>
+                )}
+                <input
+                  id="driversLicense"
+                  type="file"
+                  style={{ display: "none" }}
+                  onChange={(e) =>
+                    setFormData((prev) => ({ ...prev, driversLicense: e.target.files[0] || null }))
+                  }
+                />
+              </label>
+            </div>
+
+            {/* Voided Cheque */}
+            <div className="ngc-field-group">
+              <label className="ngc-label">Voided Cheque</label>
+              <label
+                className="ngc-upload-box"
+                htmlFor="voidedCheque"
+                style={{ cursor: "pointer" }}
+              >
+                <span className="ngc-upload-icon"><CloudUploadIcon /></span>
+                <span className="ngc-upload-label">
+                  {formData.voidedCheque ? formData.voidedCheque.name : "Browse Files"}
+                </span>
+                {!formData.voidedCheque && (
+                  <span className="ngc-upload-hint">Drag and drop files here</span>
+                )}
+                <input
+                  id="voidedCheque"
+                  type="file"
+                  style={{ display: "none" }}
+                  onChange={(e) =>
+                    setFormData((prev) => ({ ...prev, voidedCheque: e.target.files[0] || null }))
+                  }
+                />
+              </label>
+            </div>
+
+            {/* Any Previous MCA History */}
+            <div className="ngc-field-group">
+              <label className="ngc-label">
+                Any Previous MCA History <span className="required">*</span>
+              </label>
+              <select
+                className={`ngc-select${formData.mcaHistory ? " has-value" : ""}`}
+                value={formData.mcaHistory}
+                onChange={handle("mcaHistory")}
+              >
+                <option value="" disabled>Please Select</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+
+            {/* Authorization checkbox */}
+            <div className="ngc-checkbox-row">
+              <div className="ngc-checkbox-left">
+                By checking the box below, I/We authorize SherFunding Capital Solution LLC ("SherFunding"), its
+                representatives, successors,
+              </div>
+              <div className="ngc-checkbox-right">
+                <input
+                  type="checkbox"
+                  className="ngc-checkbox"
+                  id="authorized"
+                  checked={formData.authorized}
+                  onChange={handle("authorized")}
+                />
+                <label htmlFor="authorized" style={{ cursor: "pointer" }}>
+                  By checking the box below, I/We authorize SherFunding Capital Solution LLC ("SherFunding"), its
+                  representatives, successors, assigns, affiliates, funding partners
+                </label>
+              </div>
+            </div>
+
+            {/* Submit */}
+            <button type="submit" className="ngc-submit-btn">
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+    </>
+  );
+}

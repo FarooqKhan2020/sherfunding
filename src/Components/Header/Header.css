@@ -1,0 +1,202 @@
+/* =======================
+   TOP BAR
+======================= */
+.topbar {
+  background-color: var(--surface-darker);
+  color: var(--surface-white);
+  font-size: 14px;
+  transform: translateY(-100%);
+  animation: slideDown 0.6s ease 0.2s forwards;
+}
+
+@keyframes slideDown {
+  to {
+    transform: translateY(0);
+  }
+}
+
+.topbar span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.3s ease;
+}
+
+.topbar span:hover {
+  color: var(--border-lighter);
+}
+
+.topbar i {
+  color: var(--accent-color);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.topbar span:hover i {
+  color: var(--accent-bright);
+  transform: scale(1.1);
+}
+
+/* =======================
+   SOCIAL ICONS
+======================= */
+.social-icons i {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  transform: translateY(0);
+}
+
+.social-icons i:hover {
+  color: var(--accent-color);
+  transform: translateY(-2px) scale(1.1);
+}
+
+/* =======================
+   NAVBAR
+======================= */
+.navbar {
+  padding: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transform: translateY(-100%);
+  animation: slideDown 0.6s ease 0.4s forwards;
+}
+
+.navbar .navLogo {
+  /* max-height: 75px; */
+  max-width: 180px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.navbar .navLogo:hover {
+  transform: scale(1.05);
+}
+
+/* NAV LINKS */
+.navbar .nav-link {
+  font-weight: 500;
+  color: var(--primary-color) !important;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 10px 5px;
+  border-radius: 6px;
+}
+
+.navbar .nav-link:hover {
+  color: var(--primary-color) !important;
+  background: rgba(0, 82, 136, 0.08);
+  transform: translateY(-1px);
+}
+
+/* ACTIVE LINK (DESKTOP) */
+.navbar .nav-link.active {
+  color: var(--primary-color) !important;
+  font-weight: 600;
+  background: rgba(0, 82, 136, 0.12);
+}
+
+/* UNDERLINE EFFECT (DESKTOP ONLY) */
+.navbar .nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: var(--primary-color);
+  left: 50%;
+  bottom: -5px;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.navbar .nav-link:hover::after,
+.navbar .nav-link.active::after {
+  width: 100%;
+}
+
+/* MOBILE MENU ANIMATION */
+.navbar-collapse {
+  animation: fadeInDown 0.3s ease;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =======================
+   BUTTON
+======================= */
+.quote-btn {
+  background-color: var(--primary-color) !important;
+  color: var(--surface-white) !important;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  font-weight: 500;
+}
+
+.quote-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.quote-btn:hover::before {
+  left: 100%;
+}
+
+.quote-btn:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 82, 136, 0.35);
+}
+
+/* =======================
+   MOBILE STYLES
+======================= */
+@media (max-width: 991px) {
+
+  /* Navbar dropdown look */
+  .navbar-collapse {
+    background: var(--surface-white);
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+  }
+
+  /* Remove underline on mobile */
+  .navbar .nav-link::after {
+    display: none;
+  }
+
+  /* Nav spacing */
+  .navbar-nav {
+    gap: 10px !important;
+  }
+
+  .navbar .nav-link {
+    padding: 10px 12px;
+  }
+
+  /* ACTIVE MOBILE STYLE */
+  .navbar .nav-link.active {
+    background-color: var(--primary-color);
+    color: var(--surface-white) !important;
+    border-radius: 6px;
+  }
+}
