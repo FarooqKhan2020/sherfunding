@@ -97,7 +97,7 @@ const Header = () => {
                                 </NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink end className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'} to="/cheHeader.cssckout" onClick={closeMobileMenu}>
+                                <NavLink end className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'} to="/checkout" onClick={closeMobileMenu}>
                                     Credit Score
                                 </NavLink>
                             </li>
