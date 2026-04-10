@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 import { NavLink } from 'react-router-dom'
-import './header.css'
+import './Header.css'
 
 const Header = () => {
     const closeMobileMenu = useCallback(() => {
@@ -97,7 +97,7 @@ const Header = () => {
                                 </NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink end className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'} to="/checkout" onClick={closeMobileMenu}>
+                                <NavLink end className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'} to="/cheHeader.cssckout" onClick={closeMobileMenu}>
                                     Credit Score
                                 </NavLink>
                             </li>
