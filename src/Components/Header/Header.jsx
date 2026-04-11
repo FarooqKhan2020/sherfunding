@@ -98,7 +98,7 @@ const Header = () => {
                             </li>
                             <li className="nav-item">
                                 <NavLink end className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'} to="/checkout" onClick={closeMobileMenu}>
-                                    Credit Score
+                                    Credit Score Improvement
                                 </NavLink>
                             </li>
                         </ul>

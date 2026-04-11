@@ -7,6 +7,8 @@ import ServicesPage from '../pages/ServicesPage'
 import ContactPage from '../pages/ContactPage'
 import ApplyNowPage from '../pages/ApplyNowPage'
 import CheckoutPage from '../pages/CheckoutPage' 
+import PrivacyPolicyPage from '../pages/PrivacyPolicyPage'
+import TermsConditionPage from '../pages/TermsConditionPage'
 import Test from '../pages/test'
 
 const router = createBrowserRouter([
@@ -22,6 +24,8 @@ const router = createBrowserRouter([
             { path: 'test', element: <Test /> },
             { path: 'applynow', element: <ApplyNowPage /> },
             { path: 'checkout', element: <CheckoutPage /> },
+            { path: 'privacypolicy', element: <PrivacyPolicyPage /> },
+            { path: 'termscondition', element: <TermsConditionPage /> },
         ]
     }
 ])

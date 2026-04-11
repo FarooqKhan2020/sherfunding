@@ -54,13 +54,13 @@ function Footer() {
             <div className="row">
               <div className="col-md-6">
                 <ul className="footer-links">
-                  <li><a href="#">About Us</a></li>
-                  <li><a href="#">Contact Us</a></li>
-                  <li><a href="#">Online Application</a></li>
-                  <li><a href="#">Appointments</a></li>
+                  <li><a href="/about">About Us</a></li>
+                  <li><a href="contact">Contact Us</a></li>
+                  <li><a href="/applynow">Apply Now</a></li>
+                  {/* <li><a href="#">Appointments</a></li> */}
                   <li><a href="#">Privacy Policy</a></li>
                   <li><a href="#">Terms And Conditions</a></li>
-                  <li><a href="#">Blogs</a></li>
+                  <li><a href="#">Credit Score Improvement</a></li>
                 </ul>
               </div>
               <div className="col-md-6">

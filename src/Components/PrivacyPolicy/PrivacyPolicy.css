@@ -1,0 +1,48 @@
+/* SECTION */
+.privacy-section {
+  background: #f8f9fb;
+}
+
+/* TITLE */
+.privacy-title {
+  font-size: 38px;
+  font-weight: 700;
+}
+
+/* CONTENT */
+.privacy-content {
+  max-width: 900px;
+  margin: auto;
+}
+
+/* HEADINGS */
+.privacy-content h4 {
+  margin-top: 25px;
+  font-weight: 600;
+  color: #111;
+}
+
+/* TEXT */
+.privacy-content p {
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 10px;
+}
+
+/* LIST */
+.privacy-content ul {
+  padding-left: 20px;
+  margin-bottom: 15px;
+}
+
+.privacy-content li {
+  margin-bottom: 8px;
+  color: #555;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .privacy-title {
+    font-size: 28px;
+  }
+}
