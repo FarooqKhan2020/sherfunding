@@ -65,12 +65,12 @@ function Footer() {
               </div>
               <div className="col-md-6">
                 <ul className="footer-links">
-                  <li><a href="#">Merchant Cash Advances</a></li>
-                  <li><a href="#">Invoice Factoring</a></li>
-                  <li><a href="#">Business Line of Credit</a></li>
-                  <li><a href="#">Small Business Loans</a></li>
-                  <li><a href="#">SBA 7A Loan</a></li>
-                  <li><a href="#">Collateral Loans</a></li>
+                  <li><a href="form">Merchant Cash Advances</a></li>
+                  <li><a href="form">Invoice Factoring</a></li>
+                  <li><a href="form">Business Line of Credit</a></li>
+                  <li><a href="form">Small Business Loans</a></li>
+                  <li><a href="form">SBA 7A Loan</a></li>
+                  <li><a href="form">Collateral Loans</a></li>
                 </ul>
               </div>
             </div>
