@@ -1,6 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Footer.css';
+import { Link } from 'react-router-dom';
 
 function Footer() {
   return (
@@ -27,13 +28,13 @@ function Footer() {
             <ul className="footer-contact-list">
               <li>
                 <span className="contact-label">Call us at</span>
-                <a href="tel:+18889279004" className="contact-link">+1 (888) 927-9004</a>
+                <Link to="tel:+18889279004" className="contact-link">+1 (888) 927-9004</Link>
               </li>
               <li>
                 <span className="contact-label">Send us an email at</span>
-                <a href="mailto:info@SherFundingcapitalsolution.com" className="contact-link">
+                <Link to="mailto:info@SherFundingcapitalsolution.com" className="contact-link">
                   info@SherFundingcapitalsolution.com
-                </a>
+                </Link>
               </li>
               <li>
                 <span className="contact-label">Visit our office at</span>
@@ -54,23 +55,23 @@ function Footer() {
             <div className="row">
               <div className="col-md-6">
                 <ul className="footer-links">
-                  <li><a href="/about">About Us</a></li>
-                  <li><a href="contact">Contact Us</a></li>
-                  <li><a href="/applynow">Apply Now</a></li>
-                  {/* <li><a href="#">Appointments</a></li> */}
-                  <li><a href="#">Privacy Policy</a></li>
-                  <li><a href="#">Terms And Conditions</a></li>
-                  <li><a href="#">Credit Score Improvement</a></li>
+                  <li><Link to="/about">About Us</Link></li>
+                  <li><Link to="/contact">Contact Us</Link></li>
+                  <li><Link to="/applynow">Apply Now</Link></li>
+                  {/* <li><Link to="#">Appointments</Link></li> */}
+                  <li><Link to="/privacypolicy">Privacy Policy</Link></li>
+                  <li><Link to="/termscondition">Terms And Conditions</Link></li>
+                  <li><Link to="checkout">Credit Score Improvement</Link></li>
                 </ul>
               </div>
               <div className="col-md-6">
                 <ul className="footer-links">
-                  <li><a href="form">Merchant Cash Advances</a></li>
-                  <li><a href="form">Invoice Factoring</a></li>
-                  <li><a href="form">Business Line of Credit</a></li>
-                  <li><a href="form">Small Business Loans</a></li>
-                  <li><a href="form">SBA 7A Loan</a></li>
-                  <li><a href="form">Collateral Loans</a></li>
+                  <li><Link to="form">Merchant Cash Advances</Link></li>
+                  <li><Link to="form">Invoice Factoring</Link></li>
+                  <li><Link to="form">Business Line of Credit</Link></li>
+                  <li><Link to="form">Small Business Loans</Link></li>
+                  <li><Link to="form">SBA 7A Loan</Link></li>
+                  <li><Link to="form">Collateral Loans</Link></li>
                 </ul>
               </div>
             </div>

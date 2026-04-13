@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Contact.css';
+import { Link } from 'react-router-dom';
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -82,7 +83,7 @@ function Contact() {
                   </div>
                   <div className="info-content">
                     <h6>Email Us</h6>
-                    <a href="mailto:info@SherFundingcapitalsolution.com">info@SherFundingcapitalsolution.com</a>
+                    <Link to="mailto:info@SherFundingcapitalsolution.com">info@SherFundingcapitalsolution.com</Link>
                     <p className="response-time">Response within 24 hours</p>
                   </div>
                 </div>
@@ -95,7 +96,7 @@ function Contact() {
                   </div>
                   <div className="info-content">
                     <h6>Call Us</h6>
-                    <a href="tel:+18889279004">+1 (888) 927-9004</a>
+                    <Link to="tel:+18889279004">+1 (888) 927-9004</Link>
                     <p className="response-time">Mon-Fri, 9am - 6pm PST</p>
                   </div>
                 </div>
@@ -104,22 +105,22 @@ function Contact() {
               <div className="contact-social">
                 <p>Follow us on social media</p>
                 <div className="social-icons">
-                  <a href="#" className="social-icon" aria-label="Facebook">
+                  <Link to="#" className="social-icon" aria-label="Facebook">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
                     </svg>
-                  </a>
-                  <a href="#" className="social-icon" aria-label="Twitter">
+                  </Link>
+                  <Link to="#" className="social-icon" aria-label="Twitter">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
                     </svg>
-                  </a>
-                  <a href="#" className="social-icon" aria-label="LinkedIn">
+                  </Link>
+                  <Link to="#" className="social-icon" aria-label="LinkedIn">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/>
                       <circle cx="4" cy="4" r="2"/>
                     </svg>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

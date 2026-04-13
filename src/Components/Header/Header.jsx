@@ -112,6 +112,13 @@ const Header = () => {
                         >
                             Get Free Quote
                         </button>
+
+                        {/* <button
+                            className="btn quote-btn"
+                            onClick={() => window.location.href = "tel:+923001234567"}
+                        >
+                            Get Free Quote
+                        </button> */}
                     </div>
                 </div>
             </nav>

@@ -381,11 +381,14 @@ export default function ApplyNow() {
           {/* CTA */}
           <div className="an-cta">
             <p className="an-cta-text">Not sure which loan fits your business?</p>
-            <button className="an-cta-btn">
+            <button className="an-cta-btn"
+              onClick={() => navigate('/contact')}
+              // onClick={ ()=> window.location.href="/contact"}
+            >
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                 <path d="M9 2v14M2 9h14" stroke="#fff" strokeWidth="2" strokeLinecap="round"/>
               </svg>
-              Talk to a Specialist
+              Get in touch
             </button>
           </div>
         </div>

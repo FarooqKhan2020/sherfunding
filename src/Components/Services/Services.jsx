@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ServicesHome from '../Home/Services';
 import './Services.css';
+import { Link } from 'react-router-dom';
 
 function Services() {
   const [animated, setAnimated] = useState(false);
@@ -63,15 +64,15 @@ function Services() {
                 </div>
 
                 <div className="hero-cta">
-                  <a href="/applynow" className="hero-btn-primary">
+                  <Link to="/applynow" className="hero-btn-primary">
                     Apply for Funding
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M5 12h14M12 5l7 7-7 7"/>
                     </svg>
-                  </a>
-                  <a href="/contact" className="hero-btn-secondary">
-                    Talk to an Expert
-                  </a>
+                  </Link>
+                  <Link to="/contact" className="hero-btn-secondary">
+                    Get in Touch
+                  </Link>
                 </div>
               </div>
             </div>

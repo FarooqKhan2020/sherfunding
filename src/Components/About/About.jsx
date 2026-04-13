@@ -1,7 +1,7 @@
 import React from "react";
 import "./About.css";
 import { FaCheckCircle, FaRocket, FaHandshake, FaChartLine, FaShieldAlt, FaClock } from "react-icons/fa";
-
+import { Link } from "react-router-dom";
 function About() {
   const features = [
     {
@@ -73,12 +73,12 @@ function About() {
 
               {/* CTA Button */}
               <div className="about-btn-wrapper">
-                <a href="/form" className="about-btn">
+                <Link to="/form" className="about-btn">
                   <span>Apply for Funding</span>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M5 12h14M12 5l7 7-7 7"/>
                   </svg>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
