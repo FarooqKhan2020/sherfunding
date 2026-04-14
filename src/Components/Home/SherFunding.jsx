@@ -42,10 +42,10 @@ function SherFunding() {
         {/* Right Side - Content */}
         <div className="SherFunding-right">
           <div className="SherFunding-content">
-            <span className="SherFunding-tag">WE ARE SherFunding</span>
+            <span className="SherFunding-tag">WE ARE BETTER BUSINESS CAPITAL SOLUTIONS</span>
             
             <h1 className="SherFunding-heading">
-              SherFunding Provides Tailored Support For <br />
+              Better Business Capital Solutions Provides Tailored Support For <br />
               <span className="heading-highlight">Business Loans And Financing.</span>
             </h1>
             

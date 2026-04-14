@@ -64,7 +64,7 @@ const Services = () => {
 
         {/* TEXT */}
         <p className="services-text mb-5">
-          SherFunding provides comprehensive financial consulting and guidance to help
+          Better Business Capital Solutions provides comprehensive financial consulting and guidance to help
           you navigate <strong>business loan</strong> options with confidence.
         </p>
 

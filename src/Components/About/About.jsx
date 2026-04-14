@@ -36,7 +36,7 @@ function About() {
           <div className="col-lg-6">
             <div className="about-content">
               <div className="about-tag-wrapper">
-                <span className="about-tag">ABOUT SherFunding</span>
+                <span className="about-tag">ABOUT Better Business Capital Solutions</span>
                 <div className="tag-line"></div>
               </div>
               
@@ -45,7 +45,7 @@ function About() {
               </h2>
               
               <p className="about-text">
-                SherFunding Capital Solutions helps business owners secure the right
+                Better Business Capital Solutions helps business owners secure the right
                 funding with personalized guidance, lender matching, and strategy
                 planning. We specialize in small business loans, SBA financing,
                 equipment loans, working capital, and tailored capital solutions
@@ -89,8 +89,8 @@ function About() {
               {/* Main Image */}
               <div className="about-img-wrapper">
                 <img
-                  src="/logo/logo.png"
-                  alt="About SherFunding"
+                  src="/logo/logo.jpg"
+                  alt="About Better Business Capital Solutions"
                   className="about-main-img d-lg-none"
                 />
                 <div className="img-shine"></div>

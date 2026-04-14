@@ -25,7 +25,7 @@ const Hero = () => {
 
             {/* Paragraph */}
             <p className="hero-text mb-4">
-              At SherFunding Capital Solution, we’re committed to helping small and
+              At Better Business Capital Solutions, we’re committed to helping small and
               mid-sized businesses succeed by providing fast, hassle-free funding
               solutions and business loans. With approvals in as little as one
               business day, our alternative financing options range from $3,000

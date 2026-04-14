@@ -3,7 +3,7 @@ import './SherFundingcapitalform.css';
 // Inline styles as a style tag injected via dangerouslySetInnerHTML pattern
 
 
-// Simple SVG logo approximating SherFunding Capital Solutions
+// Simple SVG logo approximating Better Business Capital Solutions
 function SherFundingLogo() {
   return (
     <svg className="ngc-logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -132,9 +132,9 @@ export default function SherFundingCapitalForm() {
 
         {/* Card */}
         <div className="ngc-card">
-          <div className="ngc-card-title"> SherFunding Capital</div>
+          <div className="ngc-card-title"> Better Business Capital Solutions Capital</div>
           <p className="ngc-card-desc">
-            At SherFunding Capital Solution, we're committed to helping small and mid sized businesses succeed by
+            At Better Business Capital Solutions, we're committed to helping small and mid sized businesses succeed by
             providing fast, hassle free funding solutions and business loans within 24 hours.
           </p>
 
@@ -629,7 +629,7 @@ export default function SherFundingCapitalForm() {
             {/* Authorization checkbox */}
             <div className="ngc-checkbox-row">
               <div className="ngc-checkbox-left">
-                By checking the box below, I/We authorize SherFunding Capital Solution LLC ("SherFunding"), its
+                By checking the box below, I/We authorize Better Business Capital Solutions LLC ("SherFunding"), its
                 representatives, successors,
               </div>
               <div className="ngc-checkbox-right">
@@ -641,7 +641,7 @@ export default function SherFundingCapitalForm() {
                   onChange={handle("authorized")}
                 />
                 <label htmlFor="authorized" style={{ cursor: "pointer" }}>
-                  By checking the box below, I/We authorize SherFunding Capital Solution LLC ("SherFunding"), its
+                  By checking the box below, I/We authorize Better Business Capital Solutions LLC ("SherFunding"), its
                   representatives, successors, assigns, affiliates, funding partners
                 </label>
               </div>

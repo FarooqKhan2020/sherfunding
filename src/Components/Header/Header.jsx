@@ -26,7 +26,7 @@ const Header = () => {
                     {/* Left Side */}
                     <div className="topbar-left d-flex gap-3 flex-wrap">
                         <span>
-                            <i className="bi bi-envelope"></i> info@SherFundingcapitalsolution.com
+                            <i className="bi bi-envelope"></i> info@bbcapitalsolutions.com
                         </span>
                         <span>
                             <i className="bi bi-geo-alt"></i> 5940 S Rainbow Blvd, Suite 4101 Las Vegas, NV 89118
@@ -55,7 +55,7 @@ const Header = () => {
 
                     {/* Logo */}
                     <NavLink className="navbar-brand fw-bold" to="/">
-                        <img src="/logo/logo.png" className="navLogo" alt="SherFunding Capital Solutions" />
+                        <img src="/logo/logo.jpg" className="navLogo" alt="Better Business Capital Solutions" />
                     </NavLink>
 
                     {/* Mobile Toggle */}

@@ -83,7 +83,7 @@ function Contact() {
                   </div>
                   <div className="info-content">
                     <h6>Email Us</h6>
-                    <Link to="mailto:info@SherFundingcapitalsolution.com">info@SherFundingcapitalsolution.com</Link>
+                    <Link to="mailto:info@bbcapitalsolutions.com">info@bbcapitalsolutions.com</Link>
                     <p className="response-time">Response within 24 hours</p>
                   </div>
                 </div>

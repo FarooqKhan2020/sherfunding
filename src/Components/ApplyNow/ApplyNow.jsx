@@ -361,7 +361,7 @@ export default function ApplyNow() {
           <div className="an-hero">
             <div className="an-hero-badge">
               <div className="an-hero-badge-dot" />
-              SherFunding Capital Solutions
+              Better Business Capital Solutions
             </div>
             <h1 className="an-hero-title">
               Fund Your <span>Business Growth</span>

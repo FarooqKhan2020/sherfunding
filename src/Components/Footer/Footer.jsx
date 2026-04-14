@@ -12,10 +12,10 @@ function Footer() {
           {/* Company Description */}
           <div className="col-lg-4 col-md-6 mb-5 mb-lg-0">
             <div className="footer-brand">
-              <h3 className="footer-logo">SherFunding</h3>
+              <h3 className="footer-logo">Better Business Capital Solutions</h3>
             </div>
             <p className="footer-description">
-              SherFunding is a full-service business solutions firm with a proven track record 
+              Better Business Capital Solutions is a full-service business solutions firm with a proven track record 
               of success—even in the most challenging circumstances.
             </p>
           </div>
@@ -32,8 +32,8 @@ function Footer() {
               </li>
               <li>
                 <span className="contact-label">Send us an email at</span>
-                <Link to="mailto:info@SherFundingcapitalsolution.com" className="contact-link">
-                  info@SherFundingcapitalsolution.com
+                <Link to="mailto:info@bbcapitalsolutions.com" className="contact-link">
+                  info@bbcapitalsolutions.com
                 </Link>
               </li>
               <li>
@@ -83,7 +83,7 @@ function Footer() {
           <div className="row">
             <div className="col-12 text-center">
               <p className="copyright">
-                &copy; {new Date().getFullYear()} SherFunding. All rights reserved.
+                &copy; {new Date().getFullYear()} Better Business Capital Solutions. All rights reserved.
               </p>
             </div>
           </div>
