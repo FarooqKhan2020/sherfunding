@@ -20,13 +20,22 @@ function Contact() {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  setIsSubmitting(true);
+
+  try {
+    const response = await fetch('http://localhost:5000/api/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
       setSubmitSuccess(true);
       setFormData({
         fullName: '',
@@ -34,12 +43,17 @@ function Contact() {
         phone: '',
         message: ''
       });
-      
-      setTimeout(() => {
-        setSubmitSuccess(false);
-      }, 5000);
-    }, 1500);
-  };
+      setTimeout(() => setSubmitSuccess(false), 5000);
+    } else {
+      alert(data.error || 'Something went wrong. Please try again.');
+    }
+  } catch (error) {
+    console.error('Submit error:', error);
+    alert('Network error. Make sure backend is running on port 5000.');
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   return (
     <section className="contact-page">
