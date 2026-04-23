@@ -1,5 +1,5 @@
 import React from 'react'
-import Form from '../Components/Form/SherFundingcapitalform'
+import Form from '../Components/Form/Form'
 function FromPage() {
   return (
     <>

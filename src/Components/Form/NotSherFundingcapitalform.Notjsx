@@ -1,6 +1,5 @@
 import { useState, useRef } from "react";
-import './SherFundingcapitalform.css';
-// Inline styles as a style tag injected via dangerouslySetInnerHTML pattern
+// import './SherFundingcapitalform.css';
 
 
 // Simple SVG logo approximating Better Business Capital Solutions
