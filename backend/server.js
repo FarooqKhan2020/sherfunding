@@ -4,21 +4,21 @@ const nodemailer = require('nodemailer');
 const cors = require('cors');
 
 const app = express();
-app.use(cors());                 // React ko allow karega
-app.use(express.json());        // JSON data parse karne ke liye
+app.use(cors());                 
+app.use(express.json());        
 
-// SMTP transporter setup - PORT 465 ke liye secure: true
+
 const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,   // smtp.gmail.com
-    port: Number(process.env.SMTP_PORT), // 465
-    secure: true,                   // IMPORTANT: true for port 465
+    host: process.env.SMTP_HOST,   
+    port: Number(process.env.SMTP_PORT), 
+    secure: true,                   
     auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
     },
 });
 
-// Contact form ka API endpoint
+
 app.post('/api/contact', async (req, res) => {
     const { fullName, email, phone, message } = req.body;
 
@@ -28,8 +28,8 @@ app.post('/api/contact', async (req, res) => {
 
     const mailOptions = {
         from: `"${fullName}" <${process.env.SMTP_USER}>`,
-        // to: 'info@bbcapitalsolutions.com',   
-        to: 'farooqkhan2042@gmail.com',   
+        to: 'info@bbcapitalsolutions.com',   
+        // to: 'farooqkhan2042@gmail.com',   
         subject: `New Contact from ${fullName}`,
         text: `
             Name: ${fullName}
