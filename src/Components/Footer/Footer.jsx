@@ -2,6 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Footer.css';
 import { Link } from 'react-router-dom';
+import { servicesDetailData } from '../ServiceDetail/servicesData';
 
 function Footer() {
   return (
@@ -15,7 +16,7 @@ function Footer() {
               <h3 className="footer-logo">Better Business Capital Solutions</h3>
             </div>
             <p className="footer-description">
-              Better Business Capital Solutions is a full-service business solutions firm with a proven track record 
+              Better Business Capital Solutions is a full-service business solutions firm with a proven track record
               of success—even in the most challenging circumstances.
             </p>
           </div>
@@ -28,7 +29,7 @@ function Footer() {
             <ul className="footer-contact-list">
               <li>
                 <span className="contact-label">Call us at</span>
-                <Link to="tel:+18889279004" className="contact-link">+1 (888) 927-9004</Link>
+                <Link to="tel:646-306-9371" className="contact-link">646-306-9371</Link>
               </li>
               <li>
                 <span className="contact-label">Send us an email at</span>
@@ -39,9 +40,8 @@ function Footer() {
               <li>
                 <span className="contact-label">Visit our office at</span>
                 <address className="contact-address">
-                  5940 S Rainbow Blvd, Suite 4101<br />
-                  Las Vegas, NV 89118<br />
-                  United States
+                  869 Walnut StMacon,<br />
+                  GA 31201, USA
                 </address>
               </li>
             </ul>
@@ -66,12 +66,11 @@ function Footer() {
               </div>
               <div className="col-md-6">
                 <ul className="footer-links">
-                  <li><Link to="form">Merchant Cash Advances</Link></li>
-                  <li><Link to="form">Invoice Factoring</Link></li>
-                  <li><Link to="form">Business Line of Credit</Link></li>
-                  <li><Link to="form">Small Business Loans</Link></li>
-                  <li><Link to="form">SBA 7A Loan</Link></li>
-                  <li><Link to="form">Collateral Loans</Link></li>
+                  {servicesDetailData.map(service => (
+                    <li key={service.slug}>
+                      <Link to={`/services/${service.slug}`}>{service.title}</Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>

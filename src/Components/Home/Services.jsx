@@ -13,36 +13,42 @@ import {
 const servicesData = [
   {
     title: "Collateral Loans",
+   slug: "collateral-loans",
     text: "Secure the capital you need with Collateral Loans. Borrow as much or...",
     img: "/images/service1.webp",
     icon: FaMoneyBillWave,
   },
   {
     title: "SBA 7A loan",
+    slug: "sba-7a-loan",
     text: "Quickly assess your financing needs with our Business Funding Calculator. Borrow flexibly...",
     img: "/images/service2.webp",
     icon: FaCalculator,
   },
   {
     title: "Small Business Loans",
+    slug: "small-business-loans",
     text: "Discover ideal small business loan solutions. Startup, expansion, equipment financing - flexible...",
     img: "/images/service3.webp",
     icon: FaCoins,
   },
   {
     title: "Equipment Financing",
+    slug: "equipment-financing", 
     text: "Get the tools your business needs with flexible equipment financing solutions...",
     img: "/images/service4.webp",
     icon: FaTools,
   },
   {
     title: "Working Capital",
+    slug: "working-capital", 
     text: "Manage daily operations smoothly with our working capital loan options...",
     img: "/images/service5.webp",
     icon: FaWallet,
   },
   {
     title: "Merchant Cash Advance",
+    slug: "merchant-cash-advances",
     text: "Fast access to funds based on your business revenue performance...",
     img: "/images/service6.webp",
     icon: FaChartLine,
@@ -75,7 +81,7 @@ const Services = () => {
 
             return (
               <div className="col-lg-4 col-md-6" key={index}>
-                 <Link to="/form" className="service-link">
+                 <Link to={`/services/${service.slug}`} className="service-link">
                 <div className="service-card">
 
                   {/* IMAGE */}

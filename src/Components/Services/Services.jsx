@@ -20,10 +20,10 @@ function Services() {
         <div className="container">
           <div className="row justify-content-center text-center">
             <div className="col-lg-8">
-              <div className={`hero-content ${animated ? 'fade-in-up' : ''}`}>
+              <div className={`hero-content ${animated ? 'animated' : ''}`}>
                 <div className="hero-badge-wrapper">
                   <span className="hero-badge">Financing Solutions</span>
-                  <div className="badge-shine"></div>
+                  {/* <div className="badge-shine"></div> */}
                 </div>
                 
                 <h1 className="hero-title">

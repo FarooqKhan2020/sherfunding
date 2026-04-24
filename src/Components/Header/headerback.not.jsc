@@ -1,0 +1,185 @@
+import React, { useCallback } from 'react'
+import { NavLink, useNavigate, useLocation } from 'react-router-dom'
+import { FaChevronDown } from 'react-icons/fa'
+import { FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
+import './Header.css'
+
+const Header = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
+    const isServicesActive = location.pathname.startsWith('/services');
+    const closeMobileMenu = useCallback(() => {
+        const navbarToggle = document.querySelector('.navbar-toggler')
+        const navbarCollapse = document.getElementById('navbarNav')
+        if (!navbarToggle || !navbarCollapse) return
+        const isMobileToggleVisible = window.getComputedStyle(navbarToggle).display !== 'none'
+        const isExpanded = navbarToggle.getAttribute('aria-expanded') === 'true'
+        if (isMobileToggleVisible && isExpanded) {
+            navbarToggle.click()
+        }
+    }, [])
+
+    return (
+        <>
+            {/* TOP BAR */}
+            <div className="topbar py-2 d-none d-lg-block">
+                <div className="container d-flex justify-content-between align-items-center flex-wrap">
+                    <div className="topbar-left d-flex gap-3 flex-wrap">
+                        <span><i className="bi bi-envelope"></i> info@bbcapitalsolutions.com</span>
+                        <span><i className="bi bi-geo-alt"></i> 869 Walnut StMacon, GA 31201, USA </span>
+                    </div>
+                    <div className="topbar-right d-flex align-items-center gap-3">
+                        <span><i className="bi bi-clock"></i> Mon-Fri: 9:00 am to 4:00 pm ET</span>
+                        <div className="social-icons d-flex gap-2">
+                            <i className="bi bi-facebook"></i>
+                            <i className="bi bi-linkedin"></i>
+                            <i className="bi bi-pinterest"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* NAVBAR */}
+            <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-1">
+                <div className="container">
+                    {/* Logo */}
+                    <NavLink className="navbar-brand fw-bold" to="/">
+                        <img src="/logo/logo.jpg" className="navLogo" alt="Better Business Capital Solutions" />
+                    </NavLink>
+
+                    {/* Mobile Toggle */}
+                    <button
+                        className="navbar-toggler custom-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarNav"
+                        aria-expanded="false"
+                    >
+                        <span className="navbar-toggler-icon">
+                            <span></span>
+                        </span>
+                    </button>
+
+                    {/* Nav Links */}
+                    <div className="collapse navbar-collapse justify-content-center" id="navbarNav">
+                        <ul className="navbar-nav gap-3 text-center">
+                            <li className="nav-item">
+                                <NavLink end className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'} to="/" onClick={closeMobileMenu}>
+                                    Home
+                                </NavLink>
+                            </li>
+
+                            {/* SERVICES DROPDOWN – EXACT MATCH TO servicesDetailData */}
+                            <li className="nav-item dropdown">
+                                <span
+                                    className={`nav-link dropdown-toggle ${isServicesActive ? 'active' : ''}`}
+                                    role="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                                    aria-expanded="false"
+                                >
+                                    Solutions
+                                    <FaChevronDown className="dropdown-arrow" />
+                                </span>
+                                <ul className="dropdown-menu">
+                                    <li>
+                                        <NavLink className="dropdown-item" to="/services/collateral-loans" onClick={closeMobileMenu}>
+                                            Collateral Loans
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink className="dropdown-item" to="/services/sba-7a-loan" onClick={closeMobileMenu}>
+                                            SBA 7A Loan
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink className="dropdown-item" to="/services/small-business-loans" onClick={closeMobileMenu}>
+                                            Small Business Loans
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink className="dropdown-item" to="/services/equipment-financing" onClick={closeMobileMenu}>
+                                            Equipment Financing
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink className="dropdown-item" to="/services/working-capital" onClick={closeMobileMenu}>
+                                            Working Capital
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink className="dropdown-item" to="/services/merchant-cash-advances" onClick={closeMobileMenu}>
+                                            Merchant Cash Advance
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink
+                                            to="/services"
+                                            end
+                                            className={({ isActive }) =>
+                                                isActive ? "dropdown-item active" : "dropdown-item"
+                                            }
+                                            onClick={closeMobileMenu} 
+                                        >
+                                            All Services
+                                        </NavLink>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li className="nav-item">
+                                <NavLink className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'} to="/about" onClick={closeMobileMenu}>
+                                    About Us
+                                </NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'} to="/contact" onClick={closeMobileMenu}>
+                                    Contact Us
+                                </NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink end className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'} to="/checkout" onClick={closeMobileMenu}>
+                                    Credit Score Improvement
+                                </NavLink>
+                            </li>
+                            <li className="nav-item d-block d-lg-none">
+                                <NavLink end className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'} to="/applynow" onClick={closeMobileMenu}>
+                                    Apply Now
+                                </NavLink>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                    {/* Right Button */}
+                    <div className="d-none d-lg-block">
+                        {/* <button className="btn quote-btn" onClick={(e) => (e.target.innerText = "+92 300 1234567")}>
+                            Get Free Quote
+                        </button> */}
+                        <div className="d-none d-lg-flex align-items-center gap-3">
+                            {/* Apply Now Button */}
+                            <button
+                                className="btn quote-btn"
+                                onClick={() => navigate('/applynow')}
+                            >
+                                Apply Now
+                            </button>
+
+                            {/* Phone Icon */}
+                            <a href="tel:+923001234567" className="icon-btn">
+                                <FaPhoneAlt />
+                            </a>
+
+                            {/* Email Icon */}
+                            <a href="mailto:info@bbcapitalsolutions.com" className="icon-btn">
+                                <FaEnvelope />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </>
+    )
+}
+
+export default Header

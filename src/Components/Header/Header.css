@@ -1,4 +1,17 @@
 /* =======================
+   VARIABLES
+======================= */
+:root {
+  --surface-darker: #0a2540;
+  --surface-white: #ffffff;
+  --border-lighter: #cbd5e0;
+  --accent-color: #00c6ff;
+  --accent-bright: #33d4ff;
+  --primary-color: #0a2540;
+  --secondary-color: #1a3a5c;
+}
+
+/* =======================
    TOP BAR
 ======================= */
 .topbar {
@@ -10,9 +23,7 @@
 }
 
 @keyframes slideDown {
-  to {
-    transform: translateY(0);
-  }
+  to { transform: translateY(0); }
 }
 
 .topbar span {
@@ -26,29 +37,46 @@
   color: var(--border-lighter);
 }
 
+.topbar span svg,
 .topbar i {
   color: var(--accent-color);
   transition: color 0.3s ease, transform 0.3s ease;
+  margin-right: 4px;
 }
 
+.topbar span:hover svg,
 .topbar span:hover i {
   color: var(--accent-bright);
   transform: scale(1.1);
 }
 
-/* =======================
-   SOCIAL ICONS
-======================= */
-.social-icons i {
-  cursor: pointer;
-  transition: all 0.3s ease;
-  transform: translateY(0);
+/* Phone link */
+.topbar-phone-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
-.social-icons i:hover {
-  color: var(--accent-color);
-  transform: translateY(-2px) scale(1.1);
+.topbar-phone-link:hover {
+  color: var(--border-lighter);
 }
+
+.topbar-phone-link svg {
+  color: var(--accent-color);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.topbar-phone-link:hover svg {
+  color: var(--accent-bright);
+  transform: scale(1.1);
+}
+
+/* Show/hide phone number vs "Call Now" */
+.call-now-text { display: none; }
+.phone-number { display: inline; }
 
 /* =======================
    NAVBAR
@@ -60,6 +88,8 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   transform: translateY(-100%);
   animation: slideDown 0.6s ease 0.4s forwards;
+  z-index: 1050;
+  position: relative;
 }
 
 .navbar .navLogo {
@@ -73,7 +103,6 @@
   transform: scale(1.05);
 }
 
-/* NAV LINKS */
 .navbar .nav-link {
   font-weight: 500;
   color: var(--primary-color) !important;
@@ -89,14 +118,14 @@
   transform: translateY(-1px);
 }
 
-/* ACTIVE LINK (DESKTOP) */
 .navbar .nav-link.active {
   color: var(--primary-color) !important;
   font-weight: 600;
   background: rgba(0, 82, 136, 0.12);
+  border-bottom: none;
 }
 
-/* UNDERLINE EFFECT (DESKTOP ONLY) */
+/* Underline effect for non‑dropdown links */
 .navbar .nav-link::after {
   content: "";
   position: absolute;
@@ -105,16 +134,34 @@
   background: var(--primary-color);
   left: 50%;
   bottom: -5px;
-  transition: all 0.3s ease;
+  transition: width 0.3s ease;
   transform: translateX(-50%);
 }
 
-.navbar .nav-link:hover::after,
-.navbar .nav-link.active::after {
+.navbar .nav-link:not(.dropdown-toggle).active::after {
   width: 100%;
 }
 
-/* MOBILE MENU ANIMATION */
+/* Dropdown underline – hidden by default, shown only when active */
+.dropdown .nav-link::after {
+  display: none;
+}
+
+.dropdown .nav-link.active::after {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--primary-color);
+  margin: 0;
+  border: 0;
+}
+
+/* Hide Bootstrap’s default caret */
+.dropdown-toggle::after {
+  display: none;
+}
+
+/* Mobile menu animation */
 .navbar-collapse {
   animation: fadeInDown 0.3s ease;
 }
@@ -131,7 +178,7 @@
 }
 
 /* =======================
-   BUTTON
+   BUTTONS
 ======================= */
 .quote-btn {
   background-color: var(--primary-color) !important;
@@ -166,37 +213,266 @@
   box-shadow: 0 6px 20px rgba(0, 82, 136, 0.35);
 }
 
-/* =======================
-   MOBILE STYLES
-======================= */
-@media (max-width: 991px) {
+/* Icon buttons (phone/email) */
+.icon-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0a2540, #1a3a5c);
+  color: #fff;
+  font-size: 16px;
+  text-decoration: none;
+  transition: all 0.35s ease;
+  box-shadow: 0 4px 12px rgba(10, 37, 64, 0.25);
+  overflow: hidden;
+}
 
-  /* Navbar dropdown look */
+.icon-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00c6ff, transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.icon-btn:hover {
+  transform: translateY(-3px) scale(1.08);
+  box-shadow: 0 8px 22px rgba(0, 198, 255, 0.35);
+  color: #fff;
+}
+
+.icon-btn:hover::before {
+  opacity: 1;
+}
+
+.icon-btn:active {
+  transform: scale(0.95);
+}
+
+.icon-btn svg {
+  position: relative;
+  z-index: 1;
+}
+
+/* =======================
+   DROPDOWN (Custom React)
+======================= */
+.navbar .dropdown-toggle {
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 8px 0;
+  margin-top: 10px;
+  background: white;
+  min-width: 220px;
+  z-index: 1060;
+  display: none;
+}
+
+.dropdown-menu.show {
+  display: block;
+  animation: dropdownFade 0.2s ease;
+}
+
+@keyframes dropdownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdown-item {
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #0a2540;
+  transition: all 0.2s ease;
+  display: block;
+  text-decoration: none;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background-color: #f0f4f8;
+  color: #00c6ff;
+  padding-left: 26px;
+}
+
+.dropdown-item.active {
+  background-color: #0a2540;
+  color: white;
+}
+
+.dropdown-arrow {
+  margin-left: 6px;
+  font-size: 12px;
+  transition: transform 0.3s ease;
+}
+
+.dropdown-arrow.rotated {
+  transform: rotate(180deg);
+}
+
+/* =======================
+   HAMBURGER TOGGLER
+======================= */
+.custom-toggler {
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: none;
+  background: linear-gradient(135deg, #0a2540, #1a3a5c);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.custom-toggler:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.custom-toggler:hover {
+  background: linear-gradient(135deg, #1a3a5c, #2c5a7a);
+  transform: scale(1.02);
+}
+
+.custom-toggler .navbar-toggler-icon {
+  background-image: none;
+  position: relative;
+  width: 24px;
+  height: 18px;
+  display: block;
+}
+
+.custom-toggler .navbar-toggler-icon::before,
+.custom-toggler .navbar-toggler-icon::after,
+.custom-toggler .navbar-toggler-icon span {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  background-color: white;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  left: 0;
+}
+
+.custom-toggler .navbar-toggler-icon::before { top: 0; }
+.custom-toggler .navbar-toggler-icon span { top: 8px; }
+.custom-toggler .navbar-toggler-icon::after { bottom: 0; }
+
+.custom-toggler[aria-expanded="true"] .navbar-toggler-icon::before {
+  transform: rotate(45deg);
+  top: 8px;
+}
+
+.custom-toggler[aria-expanded="true"] .navbar-toggler-icon span {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.custom-toggler[aria-expanded="true"] .navbar-toggler-icon::after {
+  transform: rotate(-45deg);
+  bottom: 8px;
+}
+
+/* =======================
+   RESPONSIVE
+======================= */
+
+/* Mobile top bar: only email + phone in one row */
+@media (max-width: 767px) {
+  .topbar .topbar-left {
+    flex-wrap: nowrap !important;
+    width: 100%;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .topbar .container {
+    justify-content: center !important;
+  }
+  .topbar-right {
+    display: none !important;
+  }
+  /* Show "Call Now", hide full number */
+  .phone-number { 
+    display: none;
+   }
+  .call-now-text { 
+    display: inline;
+   }
+}
+
+/* Tablet / mobile navbar */
+@media (max-width: 991px) {
   .navbar-collapse {
     background: var(--surface-white);
     padding: 15px;
     border-radius: 8px;
     margin-top: 10px;
   }
-
-  /* Remove underline on mobile */
   .navbar .nav-link::after {
     display: none;
   }
-
-  /* Nav spacing */
   .navbar-nav {
     gap: 10px !important;
   }
-
   .navbar .nav-link {
     padding: 10px 12px;
   }
-
-  /* ACTIVE MOBILE STYLE */
   .navbar .nav-link.active {
     background-color: var(--primary-color);
     color: var(--surface-white) !important;
     border-radius: 6px;
   }
+  .dropdown-menu {
+    background: #f8f9fb;
+    border-radius: 12px;
+    margin-top: 5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  }
+  .dropdown-item {
+    text-align: center;
+  }
+  .navbar .dropdown-toggle {
+    display: block;
+    width: 100%;
+  }
+  .dropdown .nav-link.active::after {
+    display: none;
+  }
+}
+
+/* Social icons hover */
+.social-icons a svg {
+  color: var(--surface-white);
+  transition: all 0.3s ease;
+}
+
+.social-icons a:hover svg {
+  color: var(--accent-color);
+  transform: translateY(-2px) scale(1.1);
 }
