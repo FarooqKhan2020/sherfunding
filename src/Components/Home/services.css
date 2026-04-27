@@ -95,7 +95,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--accent-color);
+  color: var(--accent-Greencolor);
   font-size: 24px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   transition: all 0.3s ease;
@@ -103,7 +103,7 @@
 }
 
 .service-card:hover .service-icon {
-  background: var(--accent-color);
+  background: var(--accent-Greencolor);
   color: white;
   transform: scale(1.1);
 }
@@ -130,7 +130,7 @@
 }
 
 .service-card:hover .service-content h5 {
-  color: var(--accent-color);
+  color: var(--accent-Greencolor);
 }
 
 .service-content p {

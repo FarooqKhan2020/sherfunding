@@ -49,7 +49,7 @@ const Header = () => {
     return (
         <>
             {/* TOP BAR */}
-            <div className="topbar py-2">
+            {/* <div className="topbar py-2">
                 <div className="container d-flex justify-content-between align-items-center flex-wrap">
                     <div className="topbar-left d-flex gap-3 flex-wrap">
                             <a href="mailto:info@bbcapitalsolutions.com">
@@ -70,13 +70,13 @@ const Header = () => {
                         </span>
                     </div>
                 </div>
-            </div>
+            </div> */}
 
             {/* NAVBAR */}
             <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-1">
                 <div className="container">
                     <NavLink className="navbar-brand fw-bold" to="/" onClick={closeMobileMenu}>
-                        <img src="/logo/logo.jpg" className="navLogo" alt="Better Business Capital Solutions" />
+                        <img src="/logo/logo.JPG" className="navLogo" alt="Better Business Capital Solutions" />
                     </NavLink>
 
                     <button

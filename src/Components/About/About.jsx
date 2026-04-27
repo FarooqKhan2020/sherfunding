@@ -89,7 +89,7 @@ function About() {
               {/* Main Image */}
               <div className="about-img-wrapper">
                 <img
-                  src="/logo/logo.jpg"
+                  src="/logo/logo.JPG"
                   alt="About Better Business Capital Solutions"
                   className="about-main-img d-lg-none"
                 />

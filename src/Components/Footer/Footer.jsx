@@ -17,7 +17,7 @@ function Footer() {
             </div>
             <p className="footer-description">
               Better Business Capital Solutions is a full-service business solutions firm with a proven track record
-              of success—even in the most challenging circumstances.
+              of success even in the most challenging circumstances.
             </p>
           </div>
 

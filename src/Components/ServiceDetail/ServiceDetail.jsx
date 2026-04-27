@@ -44,7 +44,7 @@ const ServiceDetail = () => {
                 ))}
               </ul>
               <div className="mt-4">
-                <button className="btn btn-primary btn-lg" onClick={() => navigate('/applynow')}>
+                <button className="btn btn-primary btn-lg" onClick={() => navigate('/form')}>
                   Apply Now
                 </button>
               </div>

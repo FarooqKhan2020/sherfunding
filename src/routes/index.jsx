@@ -10,7 +10,6 @@ import CheckoutPage from '../pages/CheckoutPage'
 import PrivacyPolicyPage from '../pages/PrivacyPolicyPage'
 import TermsConditionPage from '../pages/TermsConditionPage'
 import ServiceDetail from '../Components/ServiceDetail/ServiceDetail';
-import Test from '../pages/test'
 
 const router = createBrowserRouter([
     {
