@@ -8,12 +8,14 @@ import router from './routes/index';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 const stripePromise = loadStripe("pk_test_XXXXXXXXXXXX");
-
+import { HelmetProvider } from 'react-helmet-async';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <HelmetProvider> 
     <Elements stripe={stripePromise}>
       <RouterProvider router={router} />
     </Elements>
+    </HelmetProvider>
   </StrictMode>
 );

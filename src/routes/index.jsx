@@ -24,8 +24,8 @@ const router = createBrowserRouter([
             // { path: 'test', element: <Test /> },
             { path: 'applynow', element: <ApplyNowPage /> },
             { path: 'checkout', element: <CheckoutPage /> },
-            { path: 'privacypolicy', element: <PrivacyPolicyPage /> },
-            { path: 'termscondition', element: <TermsConditionPage /> },
+            { path: 'privacy-policy', element: <PrivacyPolicyPage /> },
+            { path: 'terms-and-condition', element: <TermsConditionPage /> },
             { path: 'services/:slug', element: <ServiceDetail /> },
         ]
     }

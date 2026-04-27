@@ -59,8 +59,8 @@ function Footer() {
                   <li><Link to="/contact">Contact Us</Link></li>
                   <li><Link to="/applynow">Apply Now</Link></li>
                   {/* <li><Link to="#">Appointments</Link></li> */}
-                  <li><Link to="/privacypolicy">Privacy Policy</Link></li>
-                  <li><Link to="/termscondition">Terms And Conditions</Link></li>
+                  <li><Link to="/privacy-policy">Privacy Policy</Link></li>
+                  <li><Link to="/terms-and-condition">Terms And Conditions</Link></li>
                   <li><Link to="checkout">Credit Score Improvement</Link></li>
                 </ul>
               </div>
