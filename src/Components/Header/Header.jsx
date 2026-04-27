@@ -76,7 +76,7 @@ const Header = () => {
             <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-1">
                 <div className="container">
                     <NavLink className="navbar-brand fw-bold" to="/" onClick={closeMobileMenu}>
-                        <img src="/logo/logo.JPG" className="navLogo" alt="Better Business Capital Solutions" />
+                        <img src="/logo/logo.jpg" className="navLogo" alt="Better Business Capital Solutions" />
                     </NavLink>
 
                     <button
